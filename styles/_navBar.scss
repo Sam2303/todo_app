@@ -1,0 +1,14 @@
+.navBar{
+    background: $primaryColor;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1%;
+    color: $primaryTextColor;
+    a{
+        color: $primaryTextColor;
+        text-decoration: none;
+        margin: 1%;
+        font-size: 120%;
+    }
+}
