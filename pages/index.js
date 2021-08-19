@@ -6,11 +6,21 @@ import React, { useEffect, useState, useContext } from "react";
 import { TodosContext } from "../context/TodosContext";
 
 export default function Home(initialTodos) {
-  const { todos, setTodos } = useContext(TodosContext);
+  const { todos, setTodos, addTodo } = useContext(TodosContext);
   useEffect(() => {
     setTodos(initialTodos.initialTodos);
   }, []);
 
+  const addNewTask = () => {
+    let Name = prompt("What is the task?", "Todo");
+    let Difficulty = prompt(
+      "How Difficult do you find this usually?",
+      "Easy, Medium, Hard"
+    );
+    if(Name !== "" && Difficulty !== "" && Name !== null && Difficulty !== null ){
+      addTodo(Name, Difficulty, "Todo");
+    }else alert("Please Enter something in all fields")
+  };
 
   return (
     <div>
@@ -21,22 +31,27 @@ export default function Home(initialTodos) {
       </Head>
       <Nav />
       <div className="todoTableContainer">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Difficulty</th>
-            <th>Status</th>
-            <th>Update</th>
-          </tr>
-        </thead>
-        <tbody>
-          {todos &&
-            todos.map((todo) => {
-              return <Todo key={todo.id} todo={todo} />;
-            })}
-        </tbody>
-      </table>
+        <table>
+          <thead>
+            <tr className="tableRow">
+              <th>Name</th>
+              <th>Difficulty</th>
+              <th>Status</th>
+              <th>Update</th>
+            </tr>
+          </thead>
+        </table>
+        <button className="addTodoBtn" onClick={() => addNewTask()}>
+          <span>&#43;</span> Add New Task
+        </button>
+        <table>
+          <tbody>
+            {todos &&
+              todos.map((todo) => {
+                return <Todo key={todo.id} todo={todo} />;
+              })}
+          </tbody>
+        </table>
       </div>
     </div>
   );

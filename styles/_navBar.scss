@@ -1,18 +1,28 @@
 .navBar{
     background: $primaryColor;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     padding: 0.5%;
     color: $primaryTextColor;
+
+    .navLinks{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 33%;
+    }
+
     a{
         color: $primaryTextColor;
         text-decoration: none;
-        margin: 1%;
         font-size: 120%;
+        padding: 2vh;
     }
     h1{
-        margin-right: 3%;
+        margin:0;
         font-size: 250%;
     }
 }
